@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, StyleSheet, ScrollView, Button, Image} from 'react-native';
+import { View, Text, StyleSheet, ScrollView, ActivityIndicator, Image} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectUserToken} from '../../redux/auth/authSlice'
 import { updateGender, selectIsLoading, selectIsSuccess, selectIsError, selectResponse, setInit} from '../../redux/user/userSlice'
@@ -29,12 +29,6 @@ export const GetUserDataScreen2 = ({ navigation }) => {
         }
     }
 
-    // useEffect(() => {
-    //     if (!loading && success) {
-    //         navigation.navigate('GetUserData3')
-    //         dispatch(setInit())
-    //     }
-    // }, [loading])
 
     return (
         <ScrollView style={styles.container}>

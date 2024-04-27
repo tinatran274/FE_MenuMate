@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, ScrollView, Button, Image, TouchableOpacity} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectUserToken} from '../../redux/auth/authSlice'
-import { updateExercise, selectIsLoading, selectIsSuccess, selectIsError, selectResponse, setInit} from '../../redux/user/userSlice'
+import { updateExercise, selectIsLoading, selectIsSuccess, selectIsError, selectResponse, } from '../../redux/user/userSlice'
 import { CheckBox } from '@rneui/themed';
 import { START_LINEAR_COLOR, END_LINEAR_COLOR } from '../../constants';
 import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
@@ -23,9 +23,8 @@ export const GetUserDataScreen3 = ({ navigation }) => {
     const [updateexercise, setupdateExercise] = useState('Không vận động')
 
     const handleUpdateExercise = async () => {
-        const userId = await UserService.getUserId(userToken);
-        if (userId) {
-            dispatch(updateExercise(userId, updateexercise))
+        if (userToken) {
+            dispatch(updateExercise(userToken, updateexercise))
             navigation.navigate('GetUserData4')
         }
     }

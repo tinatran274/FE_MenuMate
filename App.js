@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from 'react'
 import { StyleSheet, Text, View } from 'react-native';
 import axios from 'axios'
 import { HomeScreen } from "./screens/HomeScreen/index";
+import { UserInfoScreen } from "./screens/UserInfoScreen/index";
 import { LoginScreen } from "./screens/LoginScreen/index";
 import { RegisterScreen } from "./screens/RegisterScreen/index";
 import { GetUserDataScreen1 } from "./screens/GetUserDataScreen/screen1";
@@ -31,10 +32,11 @@ export default function App() {
   return (
     <Provider store={store}>
       <NavigationContainer >
-        <Stack.Navigator initialRouteName="TabNavigator" screenOptions={{
-            headerShown: false
-          }}>
-          <Stack.Screen name="TabNavigator" component={TabNavigator}/>
+        <Stack.Navigator initialRouteName="Login" screenOptions={{
+            headerShown: false}}>
+          {/* <Stack.Screen name="TabNavigator" component={TabNavigator}/> */}
+          <Stack.Screen name="Home" component={HomeScreen} />
+          <Stack.Screen name="UserInfo" component={UserInfoScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Register" component={RegisterScreen} />
           <Stack.Screen name="GetUserData1" component={GetUserDataScreen1} />

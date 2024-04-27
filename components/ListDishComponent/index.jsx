@@ -1,12 +1,13 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
-import { View, Text, StyleSheet, ActivityIndicator, TextInput } from 'react-native';
-import { getDishData, selectIsLoading, selectIsSuccess, selectIsError, selectResponse} from '../../redux/dish/dishSlice'
+import { View, Text, StyleSheet, ActivityIndicator, TextInput, TouchableOpacity } from 'react-native';
+import { getDishData, selectIsLoading, selectIsSuccess, selectIsError} from '../../redux/dish/dishSlice'
 import { useSelector, useDispatch } from 'react-redux'
 import { CardDishComponent } from '../../components/CardDishComponent/index'
 import GradientCircleNextButton from '../../components/UI/GradientCircleNextButton/index';
 import GradientCirclePreviousButton from '../../components/UI/GradientCirclePreviousButton/index';
 import { Ionicons } from '@expo/vector-icons';
+import { START_LINEAR_COLOR, END_LINEAR_COLOR } from '../../constants';
 
 export const ListDishComponent = () => {
 
@@ -14,6 +15,7 @@ export const ListDishComponent = () => {
     const loading = useSelector(selectIsLoading)
     const error = useSelector(selectIsError)
     const success = useSelector(selectIsSuccess)
+    const [category, setCategory] = useState("")
     const [searchTerm, setSearchTerm] = useState("")
     const [data, setData] = useState([])
     const [pagination, setPagination] = useState({
@@ -25,21 +27,19 @@ export const ListDishComponent = () => {
 
     const fetchData = async () => {
         const { current_page, page_size } = pagination;
-        const res = await dispatch(getDishData(current_page, page_size))
+        const res = await dispatch(getDishData(current_page, page_size, category))
         setData(res.data);
         setPagination(res.pagination); 
     }
 
     useEffect(() => {
         fetchData();
-    }, [pagination.current_page]);
+    }, [pagination.current_page, category]);
+
 
     if (loading) {
         return <View><ActivityIndicator size="large" color="#0000ff" /></View>   
     }
-    // if (error) {
-    //     return <View><Text>Error loading dish.</Text></View>
-    // }
 
     return (
         <View>
@@ -65,6 +65,32 @@ export const ListDishComponent = () => {
                         onChangeText={setSearchTerm}
                     />
                 </View>
+            </View>
+            <View style={{display: "flex", flexDirection: "row", gap: 5, marginVertical: 10, flexWrap: "wrap"}}>
+                <TouchableOpacity style={{ backgroundColor: category === "" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6 }} onPress={() => setCategory("")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Tất cả</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: category === "Grains" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6  }} onPress={() => setCategory("Grains")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Nhóm tinh bột</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: category === "Protein" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6  }} onPress={() => setCategory("Protein")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Nhóm giàu đạm</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: category === "Vegetables" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6  }} onPress={() => setCategory("Vegetables")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Canh và rau</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: category === "Dairy" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6  }} onPress={() => setCategory("Dairy")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Nhóm sản phẩm từ sữa</Text>
+                </TouchableOpacity>
+                <TouchableOpacity style={{ backgroundColor: category === "Fruits" ? END_LINEAR_COLOR : '#D9D9D9', 
+                paddingHorizontal: 10, borderRadius: 50, paddingVertical: 6  }} onPress={() => setCategory("Fruits")}>
+                    <Text style={{color: "white", fontWeight: "bold"}}>Trái cây</Text>
+                </TouchableOpacity>
             </View>
             <View style={styles.list_item}>
                 {data && data.map((dish) => { return (

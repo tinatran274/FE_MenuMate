@@ -19,10 +19,6 @@ export const MainFeatureComponent = () => {
                     <Image style={styles.icon} source={require('../../assets/running.png')} />
                     <Text>Cá nhân</Text>
                 </TouchableOpacity >
-                <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('Exercise')}>
-                    <Image style={styles.icon} source={require('../../assets/exercise.png')} />
-                    <Text>Tập luyện</Text>
-                </TouchableOpacity>
                 <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('ControlCalories')}>
                     <Image style={styles.icon} source={require('../../assets/pie-chart.png')} />
                     <Text>QLý calo</Text>
@@ -31,12 +27,12 @@ export const MainFeatureComponent = () => {
                     <Image style={styles.icon} source={require('../../assets/graph.png')} />
                     <Text>Thống kê</Text>
                 </TouchableOpacity>
-            </View>
-            <View style={styles.row}>
                 <TouchableOpacity  style={styles.wrap} onPress={() => navigation.navigate('Ingredient')}>
                     <Image style={styles.icon} source={require('../../assets/img_ingre.png')} />
                     <Text>Nguyên liệu</Text>
                 </TouchableOpacity >
+            </View>
+            <View style={styles.row}>
                 <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('Dish')}>
                     <Image style={styles.icon} source={require('../../assets/main-course.png')} />
                     <Text>Món ăn</Text>

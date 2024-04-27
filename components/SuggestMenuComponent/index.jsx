@@ -22,6 +22,7 @@ export const SuggestMenuComponent = () => {
     const success = useSelector(selectIsSuccess)
     const [visible2, setVisible2] = useState(false)
     const [fitnessScore, setFitnessScore] = useState(0)
+    const [totalKcal, setTotalKcal] = useState(0)
     const [indexMeal, setIndexMeal] = useState(0)
     const [morningToday, setMorningToday] = useState([])
     const [lunchToday, setLunchToday] = useState([])
@@ -30,12 +31,14 @@ export const SuggestMenuComponent = () => {
 
     const fetchMenuData = async () => {
         const res = await dispatch(getSuggestMenu(userToken))
+        // console.log(res)
         if (res && res.fitness_score) {
             setMorningToday(res.morning_dishs)
             setLunchToday(res.noon_dishs)
             setDinnerToday(res.dinner_dishs)
             setSnackToday(res.snacks)            
             setFitnessScore(res.fitness_score)
+            setTotalKcal(res.kcal)
         }
         else if (res) {
             newMenu()
@@ -46,8 +49,8 @@ export const SuggestMenuComponent = () => {
         }
     }
     useEffect(() => {
-        fetchMenuData();
-    }, []);
+        fetchMenuData()
+    }, [])
 
     if (loading) {
         return <View><ActivityIndicator size="large" color="#0000ff" /></View>   
@@ -61,13 +64,18 @@ export const SuggestMenuComponent = () => {
         setDinnerToday(new_res.dinner_dishs)
         setSnackToday(new_res.snacks)
         setFitnessScore(new_res.fitness_score)
+        setTotalKcal(new_res.kcal)
     }
 
     return (
         <View>
             <View style={{marginBottom: 10, display: "flex", flexDirection: "row", 
             justifyContent: "space-between", alignItems: "center"}}>
-                <Text>Điểm thực đơn: {fitnessScore}</Text>
+                <View>
+                    <Text>Điểm thực đơn: {fitnessScore}</Text>
+                    <Text>Kcal: {totalKcal}</Text>
+                </View>
+                
                 <TouchableOpacity style={{ backgroundColor: END_LINEAR_COLOR, 
                     padding: 10, borderRadius: 50, display: "flex", flexDirection: "row", 
                     alignItems: "center", gap: 5 }} onPress={newMenu}>

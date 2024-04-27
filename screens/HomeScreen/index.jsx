@@ -1,6 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import { View, Text, StyleSheet, ScrollView} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { View, Text, StyleSheet, ScrollView,ActivityIndicator} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectUserToken, clearUserToken, setUserToken, setAuthError } from '../../redux/auth/authSlice';
 import { HeaderComponent } from '../../components/HeaderComponent/index'
@@ -23,8 +22,6 @@ export const HomeScreen = ({ navigation }) => {
         const user = await dispatch(getUserData(userToken))
         if (user) {
             setUserData(user)
-            if (user.age ==0 || !user.height == 1 || user.weight == 1) 
-                navigation.navigate('GetUserData1')
         } else {
             console.log('Token expired');
             setVisible2(true);
@@ -34,6 +31,8 @@ export const HomeScreen = ({ navigation }) => {
     const fetchData = async () => {
         await handleGetUserData();
     }
+
+    console.log(userToken)
 
     useEffect(() => {
         fetchData()

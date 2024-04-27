@@ -3,12 +3,9 @@ import { View, Text, StyleSheet, ScrollView, Button, Image} from 'react-native';
 import { useSelector, useDispatch } from 'react-redux'
 import { selectUserToken} from '../../redux/auth/authSlice'
 import { getUserData, selectIsLoading, selectIsSuccess, selectIsError, selectResponse, setInit} from '../../redux/user/userSlice'
-import { CheckBox } from '@rneui/themed';
 import { START_LINEAR_COLOR, END_LINEAR_COLOR } from '../../constants';
-import { MaterialCommunityIcons, Ionicons } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
 import GradientButton from '../../components/UI/GradientButton/index';
-import GradientButtonBack from '../../components/UI/GradientButtonBack/index';
-import * as UserService from '../../services/UserService';
 import LottieView from 'lottie-react-native'
 
 
@@ -24,27 +21,22 @@ export const GetUserDataScreen4 = ({ navigation }) => {
 
 
     const handleGetUserData = async () => {
-        const userId = await UserService.getUserId(userToken);
-        if (userId) {
-            dispatch(getUserData(userId))
-            if (userData) {
-                setUserData(userData)
-            }
+        const user = await dispatch(getUserData(userToken))
+        if (user) {
+            setUserData(user)
         } else {
-            dispatch(clearUserToken())
-            await AsyncStorage.removeItem("localToken")
-            setUserData(null)
+            console.log('Token expired');
+            setVisible2(true);
         }
     }
 
+    const fetchData = async () => {
+        await handleGetUserData();
+    }
+
     useEffect(() => {
-        if(userToken)
-            handleGetUserData()
-    }, [userToken])
-
-
-    if(userData)
-        console.log(userData)
+        fetchData()
+    }, [])
 
     return (
         <ScrollView style={styles.container}>
@@ -84,7 +76,7 @@ export const GetUserDataScreen4 = ({ navigation }) => {
 
 
             <GradientButton
-                onPress={() => navigation.navigate('Home')}
+                onPress={() => navigation.navigate('UserInfo')}
                 title="Hoàn tất"
                 colors={[START_LINEAR_COLOR, END_LINEAR_COLOR]}
             /> 

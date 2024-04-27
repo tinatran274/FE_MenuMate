@@ -44,7 +44,6 @@ export const DetailDishComponent = ({ dish }) => {
   }
   const fetchIngredientData = async () => {
     const res = await dispatch(getRecipeData(dish.id))
-    // console.log(res)
     if (res) {
       setListIngredient(res);
     }
@@ -80,7 +79,7 @@ export const DetailDishComponent = ({ dish }) => {
                 {isFavorite ? ( <Ionicons  onPress={handleSetFavo} name="heart" size={30} color= "red"></Ionicons>
                 ) : ( <Ionicons onPress={handleSetUnFavo} name="heart" size={30} color= "gray"></Ionicons>)}
           </View>
-          <Text style={{ fontWeight: "bold", marginTop: 40, marginBottom: 15}}>Giá trị dinh dưỡng trên 100 gram:</Text>
+          <Text style={{ fontWeight: "bold", marginTop: 40, marginBottom: 15}}>Giá trị dinh dưỡng:</Text>
 
             <View style={{display: "flex", flexDirection:"row", justifyContent: "space-between", padding: 20,
               width: "100%", borderRadius: 12, backgroundColor: '#ffffff', shadowColor: '#000',

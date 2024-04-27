@@ -41,12 +41,12 @@ const dishSlice = createSlice({
 export const { setSendRequest, setResponseSuccess, setResponseFailure, setInit } = dishSlice.actions;
 
 
-export const getDishData = (current_page, page_size) => async (dispatch) => {
+export const getDishData = (current_page, page_size, main_category) => async (dispatch) => {
   try {
     dispatch(setSendRequest());
     const options = {
         method: 'GET',
-        url: `${API_URL}/api/dish/get?page=${current_page}&page_size=${page_size}`,
+        url: `${API_URL}/api/dish/get?page=${current_page}&page_size=${page_size}&main_category=${main_category}`,
     }
     const response = await axios.request(options)
     if (response.status >= 200 && response.status < 300) {
@@ -140,6 +140,32 @@ export const getRecipeData = (dishId) => async (dispatch) => {
   }
 
 }
+
+export const getRecommendDish = (token, current_page, main_category) => async (dispatch) => {
+  try {
+    dispatch(setSendRequest());
+    const options = {
+        method: 'GET',
+        url: `${API_URL}/api/dish/recommend_dish?page=${current_page}&main_category=${main_category}`,
+        headers: {
+          Authorization: `Bearer ${token}`
+      }
+    }
+    const response = await axios.request(options)
+    if (response.status >= 200 && response.status < 300) {
+        const data = response.data
+        dispatch(setResponseSuccess())
+        return data
+    } else {
+        dispatch(setResponseFailure(response.data.msg));
+        return null
+    }
+  } catch (error) {
+      dispatch(setResponseFailure(`Error getRecommendDish: ${error.message}`));
+      return null;
+  }
+}
+
 
 
 

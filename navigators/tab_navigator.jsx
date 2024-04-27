@@ -3,7 +3,7 @@ import React from 'react'
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import { HomeScreen } from "../screens/HomeScreen/index";
 import { DetectionScreen } from "../screens/DetectionScreen/index";
-import { UserInfoScreen } from "../screens/UserInfoScreen/index";
+import { ExerciseScreen } from "../screens/ExerciseScreen/index";
 import { Ionicons } from '@expo/vector-icons';
 import { START_LINEAR_COLOR, END_LINEAR_COLOR } from '../constants';
 
@@ -41,11 +41,11 @@ const TabNavigator = () => {
               ),
             }}></Tab.Screen>
         <Tab.Screen
-            name="UserInfo"
-            component={UserInfoScreen}
+            name="Exercise"
+            component={ExerciseScreen}
             options={{
               tabBarIcon: ({focused, color, size}) => (
-                <Ionicons name="person" color={color} size={size} />
+                <Ionicons name="accessibility" color={color} size={size} />
               ),
             }}></Tab.Screen>
         </Tab.Navigator>

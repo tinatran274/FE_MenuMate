@@ -1,5 +1,5 @@
-import React, { useEffect, useStat } from "react";
-import {View, StyleSheet, ScrollView} from 'react-native';
+import React from "react";
+import { StyleSheet, ScrollView} from 'react-native';
 import { UserInfoComponent } from '../../components/UserInfoComponent/index'
 import { FeatureHeaderComponent } from '../../components/FeatureHeaderComponent/index'
 
