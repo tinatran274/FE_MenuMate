@@ -26,7 +26,7 @@ export const UserInfoComponent = () => {
 
     const handleLogout = async () => {
         dispatch(clearUserToken());
-        await AsyncStorage.removeItem("localToken")
+        // await AsyncStorage.removeItem("localToken")
         setUserData(null)
         navigation.navigate('Login')
     }

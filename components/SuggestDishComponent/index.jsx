@@ -37,9 +37,6 @@ export const SuggestDishComponent = () => {
             setRcmDishData(res.data);
             setPagination(res.pagination); 
         }
-        else {
-            console.log('sd Token expired');
-        }
     }
 
     useEffect(() => {
@@ -85,12 +82,13 @@ export const SuggestDishComponent = () => {
                 </TouchableOpacity>
             </View>
             <View style={styles.list_item}>
-                {rcmDishData && rcmDishData.map((dish) => { return (
+                {rcmDishData.length ? rcmDishData.map((dish) => { return (
                         <CardDishComponent
                             key={dish.id}
                             dish = {dish}/>
                     )})
-                }
+                : 
+                <Text>Thêm danh sách yêu thích để MenuMate có thể gợi ý món ăn cho bạn</Text>}
             </View>
             <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 50, alignItems: "center" }}>
                 {pagination.current_page > 1 && (

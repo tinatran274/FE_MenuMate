@@ -34,12 +34,8 @@ export const DetailDishComponent = ({ dish }) => {
 
     const fetchUserData = async () => {
       const res = await dispatch(getUserDishData(userToken, dish.id))
-      if (res) {
+      if (res && res.is_favorited) {
         setIsFavorite(res.is_favorited);
-      }
-      else {
-        console.log('ddd Token expired');
-        setVisible2(true);
       }
   }
   const fetchIngredientData = async () => {

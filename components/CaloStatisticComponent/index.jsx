@@ -9,6 +9,7 @@ import { getUserStatistic, selectIsLoading, selectIsSuccess, selectIsError,} fro
 import { Ionicons } from '@expo/vector-icons';
 import { LineChart } from 'react-native-chart-kit';
 import { START_LINEAR_COLOR, END_LINEAR_COLOR } from '../../constants';
+import { Avatar, Dialog, Button } from '@rneui/themed';
 
 export const CaloStatisticComponent = () => {
 
@@ -22,6 +23,7 @@ export const CaloStatisticComponent = () => {
     const [dataLabel, setDataLabel] = useState([""])
     const [dataCalo, setDataCalo] = useState([0])
     const [tdee, setTDEE] = useState(0);
+    const [visible2, setVisible2] = useState(false);
 
 
 
@@ -131,6 +133,13 @@ export const CaloStatisticComponent = () => {
                     <Text style={{fontSize: 12, color: "gray", textAlign: "center"}}>Số ngày vượt tdee</Text>
                 </View>
             </View>
+            <Dialog isVisible={visible2} onBackdropPress={() => setVisible2(false)} >
+                <Dialog.Title title="Phiên đã hết hạn"/>
+                <Text>Đăng nhập để tiếp tục</Text>
+                <Dialog.Actions>
+                    <Dialog.Button title="Đăng nhập" onPress={() => navigation.navigate('Login')}/>
+                </Dialog.Actions>
+            </Dialog>
 
 
         
