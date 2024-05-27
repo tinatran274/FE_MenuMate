@@ -14,9 +14,11 @@ import { ControlCaloriesScreen } from "./screens/ControlCaloriesScreen/index";
 import { ExerciseScreen } from "./screens/ExerciseScreen/index";
 import { StatisticScreen } from "./screens/StatisticScreen/index";
 import { IngredientScreen } from "./screens/IngredientScreen/index";
+import { DetectionScreen } from "./screens/DetectionScreen/index";
 import { DishScreen } from "./screens/DishScreen/index";
 import { DetailIngredientScreen } from "./screens/DetailIngredientScreen/index";
 import { DetailDishScreen } from "./screens/DetailDishScreen/index";
+import { ResultDetectionScreen } from "./screens/ResultDetectionScreen/index";
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -51,6 +53,8 @@ export default function App() {
           <Stack.Screen name="DetailIngredient" component={DetailIngredientScreen} />
           <Stack.Screen name="Dish" component={DishScreen} />
           <Stack.Screen name="DetailDish" component={DetailDishScreen} />
+          <Stack.Screen name="Detection" component={DetectionScreen} />
+          <Stack.Screen name="ResultDetection" component={ResultDetectionScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </Provider>

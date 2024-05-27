@@ -10,7 +10,7 @@ export const MainFeatureComponent = () => {
     return (
         <View style={styles.container}>
             <GradientArea
-                onPress={() => navigation.push('RecommendMenu')}
+                onPress={() => navigation.push('Detection')}
                 title="Khám phá thực đơn dành riêng cho bạn"
                 colors={['#FF1E3F', '#FF7E06']}
             /> 
@@ -19,7 +19,7 @@ export const MainFeatureComponent = () => {
                     <Image style={styles.icon} source={require('../../assets/running.png')} />
                     <Text>Cá nhân</Text>
                 </TouchableOpacity >
-                <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('ControlCalories')}>
+                <TouchableOpacity style={styles.wrap}>
                     <Image style={styles.icon} source={require('../../assets/pie-chart.png')} />
                     <Text>QLý calo</Text>
                 </TouchableOpacity>
