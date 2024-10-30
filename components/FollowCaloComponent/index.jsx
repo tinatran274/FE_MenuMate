@@ -2,7 +2,7 @@ import React, { useEffect, useState, useRef } from "react";
 import { View, Text, Image, StyleSheet, TextInput} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from "react-redux";
-// import { Svg,  Circle } from 'react-native-svg';
+import { Svg,  Circle } from 'react-native-svg';
 import GradientButton from '../UI/GradientButton/index';
 import AntDesignIcon from '@expo/vector-icons/AntDesign';
 import { selectUserToken, clearUserToken, setUserToken, setAuthError } from '../../redux/auth/authSlice';
@@ -170,7 +170,7 @@ export const FollowCaloComponent = () => {
                 </View>
             </View>
             <View style={{marginBottom: 40, alignItems: "center", justifyContent: 'center',}}>
-                {/* <Svg width={250} height={250}>
+                <Svg width={250} height={250}>
                     <Circle cx={125} cy={125} r={(250 - 20) / 2} fill="none"
                         stroke='#e6e6e6' strokeWidth={20}
                     />
@@ -179,7 +179,7 @@ export const FollowCaloComponent = () => {
                         strokeDashoffset={(((250 - 20) / 2) * 2 * Math.PI) - (percen/100) * ((250 - 20) / 2) * 2 * Math.PI}
                         transform={`rotate(-90 ${125} ${125})`}
                     />
-                </Svg> */}
+                </Svg>
                 <View style={{position: "absolute", alignItems: "center"}}>
                     <Text style={{fontWeight: "bold", fontSize: 25, color: '#1A8C03' }}>
                     {totalCalories}/{Math.trunc(tdee)}</Text>

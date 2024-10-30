@@ -51,7 +51,7 @@ export const DetectionScreen = ({ navigation }) => {
           if (!result.canceled) {
               const uri = result.assets[0].uri
               setImage(uri)
-              // navigation.push('ResultDetection', {uri})
+              navigation.push('ResultDetection', {uri})
           } else {
               Alert.alert('Image picker canceled', 'Image picker canceled. You can add your own message here.');
           }
@@ -66,7 +66,7 @@ export const DetectionScreen = ({ navigation }) => {
       try {
         const { uri } = await cameraRef.current.takePictureAsync();
         setImage(uri);
-        // navigation.push('ResultDetection', {uri})
+        navigation.push('ResultDetection', {uri})
       } catch (error) {
         console.error('Error taking picture:', error);
       }

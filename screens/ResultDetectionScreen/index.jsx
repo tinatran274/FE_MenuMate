@@ -1,8 +1,8 @@
 
-import React, { useEffect, useStat } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text} from 'react-native';
 import { FeatureHeaderComponent } from '../../components/FeatureHeaderComponent/index'
-// import { Result } from '../../components/Result/index'
+import { Result } from '../../components/Result/index'
 import { ScrollView } from 'react-native';
 
 
@@ -13,7 +13,7 @@ export const ResultDetectionScreen = ({ route }) => {
     return (
         <ScrollView style={styles.container}>
             <FeatureHeaderComponent title="Kết quả"/>
-            {/* <Result uri={uri}/> */}
+            <Result uri={uri}/>
         </ScrollView  >
     )
 }

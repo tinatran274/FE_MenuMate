@@ -48,7 +48,7 @@ export const HomeScreen = ({ navigation }) => {
                 <Dialog.Title title="Phiên đã hết hạn"/>
                 <Text>Đăng nhập để tiếp tục</Text>
                 <Dialog.Actions>
-                    <Dialog.Button title="Đăng nhập" onPress={() => navigation.navigate('Login')}/>
+                    <Button title="Đăng nhập" onPress={() => navigation.navigate('Login')}/>
                 </Dialog.Actions>
             </Dialog>
 

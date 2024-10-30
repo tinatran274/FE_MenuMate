@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import GradientArea from '../../components/UI/GradientArea/index';
+import GradientArea2 from '../../components/UI/GradientArea2/index';
 
 export const MainFeatureComponent = () => {
 
@@ -10,8 +11,13 @@ export const MainFeatureComponent = () => {
     return (
         <View style={styles.container}>
             <GradientArea
-                onPress={() => navigation.push('Detection')}
+                onPress={() => navigation.push('RecommendMenu')}
                 title="Khám phá thực đơn dành riêng cho bạn"
+                colors={['#FF1E3F', '#FF7E06']}
+            /> 
+            <GradientArea2
+                onPress={() => navigation.push('Detection')}
+                title="Nhận diện thực phẩm"
                 colors={['#FF1E3F', '#FF7E06']}
             /> 
             <View style={styles.row}>
@@ -19,25 +25,26 @@ export const MainFeatureComponent = () => {
                     <Image style={styles.icon} source={require('../../assets/running.png')} />
                     <Text>Cá nhân</Text>
                 </TouchableOpacity >
-                <TouchableOpacity style={styles.wrap}>
+                <TouchableOpacity style={styles.wrap} onPress={() => navigation.navigate('ControlCalories')}>
                     <Image style={styles.icon} source={require('../../assets/pie-chart.png')} />
                     <Text>QLý calo</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('Statistic')}>
-                    <Image style={styles.icon} source={require('../../assets/graph.png')} />
-                    <Text>Thống kê</Text>
-                </TouchableOpacity>
-                <TouchableOpacity  style={styles.wrap} onPress={() => navigation.navigate('Ingredient')}>
+                <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('Ingredient')}>
                     <Image style={styles.icon} source={require('../../assets/img_ingre.png')} />
                     <Text>Nguyên liệu</Text>
-                </TouchableOpacity >
-            </View>
-            <View style={styles.row}>
+                </TouchableOpacity>
                 <TouchableOpacity style={styles.wrap} onPress={() => navigation.push('Dish')}>
                     <Image style={styles.icon} source={require('../../assets/main-course.png')} />
                     <Text>Món ăn</Text>
                 </TouchableOpacity>
+                
             </View>
+            {/* <View style={styles.row}>
+                <TouchableOpacity  style={styles.wrap} onPress={() => navigation.navigate('Ingredient')}>
+                    <Image style={styles.icon} source={require('../../assets/img_ingre.png')} />
+                    <Text>Nguyên liệu</Text>
+                </TouchableOpacity >
+            </View> */}
             <View style={styles.line} />
         </View>
     )

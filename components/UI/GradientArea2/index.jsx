@@ -3,7 +3,7 @@ import { TouchableHighlight, Text, View, StyleSheet, Image } from 'react-native'
 import { LinearGradient } from 'expo-linear-gradient';
 import { Ionicons } from '@expo/vector-icons';
 
-const GradientArea = ({ onPress, title, colors }) => {
+const GradientArea2 = ({ onPress, title, colors }) => {
     return (
         <TouchableHighlight
           underlayColor="transparent"
@@ -21,10 +21,10 @@ const GradientArea = ({ onPress, title, colors }) => {
                     shadowRadius: 4,
                     elevation: 5,}} 
                     name="caret-forward" size={36} color="#FF1E3F" />
-                <View style={{ alignItems: "center", gap: 25, width: "40%",
+                <View style={{ alignItems: "center", gap: 25, width: "30%",
                   display: "flex", flexDirection: "row"
                  }}>
-                  <Image style={{ objectFit: "contain", height: 100}} source={require('../../../assets/deco1.png')} />
+                  <Image style={{ objectFit: "contain", height: 60, width: 100}} source={require('../../../assets/camera.png')} />
                   <Text style={styles.buttonText}>{title}</Text>
                 </View>
             </LinearGradient>
@@ -40,13 +40,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.8,
     shadowRadius: 4,
     elevation: 5,
-    marginTop: 5,
-    marginBottom: 10
+    marginBottom: 20
   },
   gradient: {
     paddingVertical: 5,
     paddingHorizontal: 20,
-    height: 100,
+    height: 70,
   },
   buttonText: {
     color: '#fff',
@@ -55,4 +54,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default GradientArea;
+export default GradientArea2;

@@ -138,7 +138,6 @@ export const getRecipeData = (dishId) => async (dispatch) => {
       dispatch(setResponseFailure(`Error getIngredientData: ${error.message}`));
       return null;
   }
-
 }
 
 export const getRecommendDish = (token, current_page, main_category) => async (dispatch) => {
@@ -165,8 +164,6 @@ export const getRecommendDish = (token, current_page, main_category) => async (d
       return null;
   }
 }
-
-
 
 
 export const selectIsLoading = (state) => state.dish.loading;
