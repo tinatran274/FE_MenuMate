@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import {View, StyleSheet, Text, TouchableOpacity, Image, Alert} from 'react-native';
+import {View, StyleSheet, Text, TouchableOpacity, Image, Alert, Button} from 'react-native';
 import { Camera } from 'expo-camera';
 import { CameraView, useCameraPermissions } from 'expo-camera';
 import * as ImagePicker from 'expo-image-picker';
